@@ -1,0 +1,1 @@
+// Gun.js placeholder

@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GTA V Collab Map v7</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css" />
+<style>
+  html, body, #map { height: 100%; margin:0; padding:0; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+<script>
+  // Initialize map with GTA V image
+  var map = L.map('map', { minZoom: -1 }).setView([0,0], 0);
+  var bounds = [[0,0],[2048,2048]];
+  L.imageOverlay('https://i.postimg.cc/9M1Dgfg3/GTAV-ATLUS-2048x2048.png', bounds).addTo(map);
+  map.setMaxBounds(bounds);
+
+  // Draw control placeholder
+  var drawnItems = new L.FeatureGroup();
+  map.addLayer(drawnItems);
+  var drawControl = new L.Control.Draw({
+    edit: { featureGroup: drawnItems }
+  });
+  map.addControl(drawControl);
+
+  // Gun.js for realtime collaboration placeholder
+  var gun = Gun();
+  var roomNode = gun.get("room-example");
+
+  console.log("Map initialized, drawing tools loaded, Gun.js room ready.");
+</script>
+</body>
+</html>
